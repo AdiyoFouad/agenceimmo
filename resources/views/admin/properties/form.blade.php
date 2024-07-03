@@ -88,6 +88,14 @@
             'name' => 'sold',
         ])
         
+        @include('shared.select', [
+            'label' => '0ption',
+            'value' => $property->options()->pluck('id'),
+            'name' => 'options',
+            'multiple' => true,
+            'options' => $options
+        ])
+        
         <button type="submit" class="btn btn-primary">{{ $property->exists ? "Modifier" : "Créer"}}</button>
     </form>
 @endsection
