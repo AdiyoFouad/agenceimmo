@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\PropertyController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\OptionController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,8 +16,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', [HomeController::class,'index'])->name('index');
+
+Route::prefix('/biens')->controller(\App\Http\Controllers\PropertyController::class)->name('property.')->group(function () {
+
+    Route::get('/', 'index')->name('index');
+    Route::get('/{slug}-{property}', 'show')->name('show')->where([
+        'property'=>'[0-9]+',
+        'slug' => '[0-9a-z\-]+'
+    ]);
+
 });
 
 Route::prefix('admin')->name('admin.')->group(function () {
