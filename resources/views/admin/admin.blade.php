@@ -29,19 +29,19 @@
                         <a href="{{route('admin.option.index')}}" @class(["nav-link", 'active' => str_contains($route,'option.')])>Gérer les options</a>
                     </li>
                 </ul>
+                @auth
+                    {{Auth::user()->name}}  
+                    <form action="{{route('auth.logout')}}" method="post">
+                        @csrf
+                        @method("delete")
+                        <button class="btn btn-warning" type="submit">Déconnexion</button>
+                    </form>
+                @endauth
+                @guest 
+                    <a href="{{route('auth.login')}}" class="nav-link">Login</a>
+                @endguest
             </div>
-            <!--
-            @auth
-                {{Auth::user()->name}}  
-                <form action="route('auth.logout')" method="post">
-                    @csrf
-                    @method("delete")
-                    <button class="btn btn-warning" type="submit">Déconnexion</button>
-                </form>
-            @endauth
-            @guest 
-                <a href="route('auth.login')" class="nav-link">Login</a>
-            @endguest-->
+           
         </div>
     </nav>
 

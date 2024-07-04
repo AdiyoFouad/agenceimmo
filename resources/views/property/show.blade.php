@@ -19,37 +19,41 @@
         <hr>
                 <h4>Interressé par ce bien ?</h4>
     
-                <form action="" method="POST" class="vstack gap-3" >
+                <form action="{{ route('property.contact', ['property' => $property->id]) }}" method="POST" class="vstack gap-3" >
                     @csrf
                     <div class="row">
                         @include('shared.input', [
                             'label' => 'Nom',
                             'name' => 'lastname',
-                            'class' => 'col'
+                            'class' => 'col',
+                            'value' => 'DUARTE'
                         ])
                         @include('shared.input', [
                             'label' => 'Prénom',
                             'name' => 'firstname',
-                            'class' => 'col'
+                            'class' => 'col',
+                            'value' => 'Magengo'
                         ])
                     </div>
                     <div class="row">
                         @include('shared.input', [
                             'label' => 'Téléphone',
                             'name' => 'phone',
-                            'class' => 'col'
+                            'class' => 'col',
+                            'value' => '97938219'
                         ])
                         @include('shared.input', [
                             'label' => 'Email',
-                            'name' => 'firstname',
+                            'name' => 'email',
                             'class' => 'col',
-                            'type' => 'email'
+                            'type' => 'email',
+                            'value' => 'odjfouad38@gmail.com'
                         ])
                     </div>
                     
                     @include('shared.input', [
                         'label' => 'Votre message',
-                        'name' => 'firstname',
+                        'name' => 'message',
                         'class' => 'col',
                         'type' => 'textarea'
                     ])

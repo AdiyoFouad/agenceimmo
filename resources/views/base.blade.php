@@ -22,25 +22,24 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a href="{{route('property.index')}}" aria-current="page" @class(["nav-link", 'active' => str_contains($route,'property.')])>Biens</a>
+                        <a href="{{route('admin.property.index')}}" aria-current="page" @class(["nav-link", 'active' => str_contains($route,'property.')])>Admin Panel</a>
                     </li>
                     <li class="nav-item">
-                        <a href="/" @class(["nav-link", 'active' => str_contains($route,'option.')])>Options</a>
+                        <a href="{{route('property.index')}}" aria-current="page" @class(["nav-link", 'active' => str_contains($route,'property.')])>Biens</a>
                     </li>
                 </ul>
             </div>
-            <!--
             @auth
                 {{Auth::user()->name}}  
-                <form action="route('auth.logout')" method="post">
+                <form action="{{route('auth.logout')}}" method="post">
                     @csrf
                     @method("delete")
                     <button class="btn btn-warning" type="submit">Déconnexion</button>
                 </form>
             @endauth
             @guest 
-                <a href="route('auth.login')" class="nav-link">Login</a>
-            @endguest-->
+                <a href="{{route('auth.login')}}" class="nav-link">Login</a>
+            @endguest
         </div>
     </nav>
 
