@@ -7,8 +7,31 @@
     <div class="container">
         
 
+        <div>
+            
+              
+        </div>
         <div class="row">
             <div class="mt-4 col-6">
+                <div id="myCarousel" class="carousel slide w-100" style="height: 450px; overflow-y: hidden" data-bs-ride="carousel">
+                
+                
+                    <div class="carousel-inner" style="width: 5">
+                        @foreach ($property->images as $item)
+                            <div class="carousel-item {{$loop->first ? 'active' : ''}}">
+                            <img src="{{ $item->getPath() }}" class="d-block" alt="Slide {{ $loop->index + 1 }}">
+                            </div>
+                        @endforeach
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
                 <h1>{{ $property->title }}</h1>
         <h2>{{ $property->rooms }} pièces - {{ $property->surface }}m²</h2>
 

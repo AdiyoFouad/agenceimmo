@@ -71,6 +71,7 @@ class PropertyController extends Controller
     {
         //dd($request->validated());
         $property->options()->sync($request->validated('options'));
+        $property->attachImages($request->validated('images'));
         $property->update($request->validated());
         return redirect()->route('admin.property.index')->with('success','Le bien a bien été modifié');
     }

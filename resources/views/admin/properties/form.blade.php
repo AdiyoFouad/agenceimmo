@@ -3,7 +3,7 @@
 @section('title', $property->exists ? "Editer un bien" : "Créer un bien")
 
 @section('content')
-    <form action="{{ $property->exists ? route('admin.property.update', $property) : route('admin.property.store')}}" id="propertyForm" class="col-10 m-auto card p-3 vstack gap-2" method="POST">
+    <form action="{{ $property->exists ? route('admin.property.update', $property) : route('admin.property.store')}}" id="propertyForm" class="col-10 m-auto card p-3 vstack gap-2" method="POST"  enctype="multipart/form-data">
         @csrf
         @method($property->exists ? "PATCH" : "POST")
         <h2 class="text-center">@yield('title')</h2>
@@ -95,6 +95,15 @@
             'multiple' => true,
             'options' => $options
         ])
+        @include('shared.input', [
+            'label' => 'Images',
+            'name' => 'images',
+            'class' => 'col',
+            'multiple' => true,
+            'type' => 'file',
+            'value' => '[]'
+        ])
+
         
         <button type="submit" class="btn btn-primary">{{ $property->exists ? "Modifier" : "Créer"}}</button>
     </form>

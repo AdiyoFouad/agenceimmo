@@ -1,6 +1,8 @@
 <div class="card">
     <div class="card-body">
         <h5 class="card-title">
+            
+            <img src="{{$property->getFirstImage()?->getPath()}}" alt="" class="w-100">
             <a href="{{route('property.show', ['slug'=>Str::slug($property->title), 'property'=>$property->id])}}">{{ $property->title }}</a>
         </h5>
         <p class="card-text"> {{ $property->surface }}m² - {{ $property->city }} ({{ $property->postal_code }}) </p>
